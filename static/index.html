@@ -332,11 +332,11 @@
 
       <!-- Workspace View Switcher Tabs -->
       <div class="workspace-view-tabs">
-        <button class="view-tab-btn active" id="tab-graph-view">
+        <button class="view-tab-btn active" id="tab-btn-topology" data-tab="topology">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
           TOPOLOGY GRAPH &amp; QUANTUM CUT
         </button>
-        <button class="view-tab-btn" id="tab-table-view">
+        <button class="view-tab-btn" id="tab-btn-datasheet" data-tab="datasheet">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
           DATASHEET SCAM VERIFIER &amp; INSPECTION TABLE
           <span class="tab-badge mono" id="table-tx-badge">0 TXNS</span>
@@ -345,29 +345,29 @@
 
       <!-- Network Graph Workspace Area -->
       <div class="graph-workspace-panel">
-        
-        <!-- Quantum Solver & Dataset Ingestion Ribbon -->
-        <div class="quantum-control-ribbon">
-          <div class="quantum-actions-group">
-            <input type="file" id="input-csv-upload" accept=".csv" style="display: none;">
-            <button class="btn-quantum-action" id="btn-upload-csv" title="Upload custom UPI transaction dataset (.csv)">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              UPLOAD CSV DATASHEET
-            </button>
-            <button class="btn-quantum-action highlight" id="btn-run-quantum" title="Execute QAOA Ising Hamiltonian Statevector Solver">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              EXECUTE QUANTUM TOPOLOGY OPTIMIZATION
-            </button>
+
+        <!-- VIEW 1: Topology Graph View Container -->
+        <div id="view-topology-graph" class="tab-view active">
+          <!-- Quantum Solver & Dataset Ingestion Ribbon -->
+          <div class="quantum-control-ribbon">
+            <div class="quantum-actions-group">
+              <input type="file" id="input-csv-upload" accept=".csv" style="display: none;">
+              <button class="btn-quantum-action" id="btn-upload-csv" title="Upload custom UPI transaction dataset (.csv)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                UPLOAD CSV DATASHEET
+              </button>
+              <button class="btn-quantum-action highlight" id="btn-run-quantum" title="Execute QAOA Ising Hamiltonian Statevector Solver">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                EXECUTE QUANTUM TOPOLOGY OPTIMIZATION
+              </button>
+            </div>
+
+            <div class="quantum-telemetry-pill" id="quantum-pill-badge">
+              <span class="qpu-icon">⚡</span>
+              <span class="qpu-text mono" id="qpu-telemetry-text">QPU Statevector: 8 Qubits | Depth: 14 | Fidelity: 98.4%</span>
+            </div>
           </div>
 
-          <div class="quantum-telemetry-pill" id="quantum-pill-badge">
-            <span class="qpu-icon">⚡</span>
-            <span class="qpu-text mono" id="qpu-telemetry-text">QPU Statevector: 8 Qubits | Depth: 14 | Fidelity: 98.4%</span>
-          </div>
-        </div>
-
-        <!-- VIEW 1: D3 Network Topology Graph Canvas View -->
-        <div class="workspace-view-content active" id="workspace-graph-view">
           <div class="graph-header-bar">
             <div class="graph-title-block">
               <h3>TRANSACTION TOPOLOGY &amp; QUANTUM SMURFING DETECTOR</h3>
@@ -444,7 +444,7 @@
         </div>
 
         <!-- VIEW 2: Datasheet Scam Verifier & Inspection Table -->
-        <div class="workspace-view-content" id="workspace-table-view" style="display: none;">
+        <div id="view-datasheet-table" class="tab-view" style="display: none;">
           <div class="datasheet-toolbar">
             <div class="toolbar-search-box">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>

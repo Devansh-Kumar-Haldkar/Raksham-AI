@@ -37,10 +37,14 @@ const btnRunQuantum = document.getElementById('btn-run-quantum');
 const qpuTelemetryText = document.getElementById('qpu-telemetry-text');
 
 // Workspace Tabs & Datasheet Table Elements
-const tabGraphView = document.getElementById('tab-graph-view');
-const tabTableView = document.getElementById('tab-table-view');
-const workspaceGraphView = document.getElementById('workspace-graph-view');
-const workspaceTableView = document.getElementById('workspace-table-view');
+const tabGraphBtn = document.querySelector('[data-tab="topology"]') || document.getElementById('tab-btn-topology') || document.getElementById('tab-graph-view');
+const tabTableBtn = document.querySelector('[data-tab="datasheet"]') || document.getElementById('tab-btn-datasheet') || document.getElementById('tab-table-view');
+const viewGraph = document.getElementById('view-topology-graph') || document.getElementById('workspace-graph-view');
+const viewTable = document.getElementById('view-datasheet-table') || document.getElementById('workspace-table-view');
+const tabGraphView = tabGraphBtn;
+const tabTableView = tabTableBtn;
+const workspaceGraphView = viewGraph;
+const workspaceTableView = viewTable;
 const tableTxBadge = document.getElementById('table-tx-badge');
 const tableSearchInput = document.getElementById('table-search-input');
 const btnFilterAll = document.getElementById('btn-filter-all');
@@ -166,6 +170,7 @@ if (btnUploadCsv && inputCsvUpload) {
 
       await fetchAndRenderNetworkGraph();
       await loadDatasetPresets();
+      await fetchAndRenderDatasheetTable();
       switchView(viewCheckout);
     } catch (err) {
       console.error('Dataset upload error:', err);
@@ -1011,38 +1016,75 @@ btnResetSim.addEventListener('click', async () => {
 
 // --- 9. DATASHEET SCAM VERIFIER & INSPECTION TABLE ENGINE ---
 
-function switchWorkspaceTab(tab) {
-  if (tab === 'graph') {
-    if (tabGraphView) tabGraphView.classList.add('active');
-    if (tabTableView) tabTableView.classList.remove('active');
-    if (workspaceGraphView) workspaceGraphView.classList.add('active');
-    if (workspaceTableView) workspaceTableView.style.display = 'none';
-  } else {
-    if (tabTableView) tabTableView.classList.add('active');
-    if (tabGraphView) tabGraphView.classList.remove('active');
-    if (workspaceTableView) {
-      workspaceTableView.classList.add('active');
-      workspaceTableView.style.display = 'flex';
+function resizeD3Graph() {
+  const container = document.getElementById('graph-container');
+  if (!container || !svg) return;
+  const width = container.clientWidth || 800;
+  const height = container.clientHeight || 500;
+  svg.attr('viewBox', [0, 0, width, height]);
+  if (simulation) {
+    simulation.force('center', d3.forceCenter(width / 2, height / 2));
+    simulation.alpha(0.05).restart();
+  }
+}
+
+function switchTab(target) {
+  if (target === 'topology' || target === 'graph') {
+    if (tabGraphBtn) tabGraphBtn.classList.add('active');
+    if (tabTableBtn) tabTableBtn.classList.remove('active');
+    if (viewGraph) {
+      viewGraph.classList.add('active');
+      viewGraph.style.display = 'flex';
     }
-    if (workspaceGraphView) workspaceGraphView.classList.remove('active');
+    if (viewTable) {
+      viewTable.classList.remove('active');
+      viewTable.style.display = 'none';
+    }
+    if (window.cy) {
+      window.cy.resize();
+      window.cy.fit();
+    }
+    resizeD3Graph();
+  } else if (target === 'datasheet' || target === 'table') {
+    if (tabTableBtn) tabTableBtn.classList.add('active');
+    if (tabGraphBtn) tabGraphBtn.classList.remove('active');
+    if (viewGraph) {
+      viewGraph.classList.remove('active');
+      viewGraph.style.display = 'none';
+    }
+    if (viewTable) {
+      viewTable.classList.add('active');
+      viewTable.style.display = 'flex';
+    }
     fetchAndRenderDatasheetTable();
   }
 }
 
-if (tabGraphView) {
-  tabGraphView.addEventListener('click', () => switchWorkspaceTab('graph'));
+const switchWorkspaceTab = switchTab;
+
+if (tabGraphBtn) {
+  tabGraphBtn.addEventListener('click', () => switchTab('topology'));
 }
 
-if (tabTableView) {
-  tabTableView.addEventListener('click', () => switchWorkspaceTab('table'));
+if (tabTableBtn) {
+  tabTableBtn.addEventListener('click', () => switchTab('datasheet'));
 }
+
+window.addEventListener('resize', () => {
+  if (viewGraph && viewGraph.style.display !== 'none') {
+    resizeD3Graph();
+  }
+  if (window.cy) {
+    window.cy.resize();
+  }
+});
 
 async function fetchAndRenderDatasheetTable() {
   try {
     const res = await fetch(`${API_BASE}/api/v1/transactions`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    datasheetTransactions = data.transactions || [];
+    datasheetTransactions = data.transactions || (Array.isArray(data) ? data : []);
     
     updateDatasheetCounters();
     renderDatasheetTableRows();

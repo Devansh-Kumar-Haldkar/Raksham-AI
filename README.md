@@ -82,7 +82,7 @@ graph TD
 ├── data/
 │   └── sample_transactions.csv  # Embedded 60-node sample dataset for instant evaluation
 ├── tests/
-│   └── test_engine.py       # Full unit & integration test suite (15 test cases)
+│   └── test_engine.py       # Full unit & integration test suite (17 test cases)
 ├── requirements.txt         # Pinned Python package dependencies
 ├── .gitignore               # Standard Python & environment exclusions
 └── README.md                # Technical documentation

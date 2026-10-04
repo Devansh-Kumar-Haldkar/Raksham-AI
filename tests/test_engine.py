@@ -216,5 +216,29 @@ def test_batch_verify_endpoint():
     assert len(data["results"]) == data["total_transactions"]
 
 
+def test_datasheet_records_alias_endpoint():
+    client.post("/api/v1/reset-graph")
+    res = client.get("/api/v1/datasheet-records")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["status"] == "SUCCESS"
+    assert data["total"] > 0
+    assert len(data["transactions"]) > 0
+
+
+def test_inspect_datasheet_alias_endpoint():
+    csv_content = (
+        "tx_id,step,timestamp_sec,source_vpa,target_vpa,amount,tx_type,dwell_time_sec,is_fraud,is_flagged_fraud,source_balance_before,source_balance_after,target_balance_before,target_balance_after,source_account_age_hours,target_account_age_hours\n"
+        "TXN_002,1,1700000000,test_user@upi,test_mule@upi,5000.0,P2P,30.0,1,1,10000.0,5000.0,0.0,5000.0,2400.0,12.0\n"
+    )
+    files = {"file": ("test_transactions.csv", csv_content, "text/csv")}
+    res = client.post("/api/v1/inspect-datasheet", files=files)
+    assert res.status_code == 200
+    data = res.json()
+    assert data["status"] == "DATASET_LOADED_SUCCESS"
+    client.post("/api/v1/reset-graph")
+
+
+
 
 
