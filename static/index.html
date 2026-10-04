@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAKSHAM PS2 — UPI Scam Pattern & Coercion Recognition SOC</title>
+  
+  <!-- Google Fonts: Space Grotesk, JetBrains Mono, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- D3.js v7 for Network Topology Graph -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top App Navigation / System Status Bar -->
+  <header class="soc-topbar">
+    <div class="brand-group">
+      <div class="brand-badge">RAKSHAM</div>
+      <div class="brand-title">
+        <h1>UPI FRAUD &amp; COERCION RECOGNITION ENGINE</h1>
+        <span class="sub-label">PS2 // REAL-TIME TOPOLOGICAL DEFENSE PLATFORM</span>
+      </div>
+    </div>
+
+    <div class="topbar-controls">
+      <div class="status-indicator live">
+        <span class="pulse-dot"></span>
+        <span class="status-text">NETWORK SURVEILLANCE: ACTIVE</span>
+      </div>
+      <div class="telemetry-pill">
+        <span class="pill-label">ENGINE LATENCY</span>
+        <span class="pill-val mono" id="engine-latency-val">&lt; 14ms</span>
+      </div>
+      <button id="btn-theme-toggle" class="btn-ctrl theme-toggle-btn" title="Toggle Theme (Obsidian / Slate Dim)">
+        <svg class="theme-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <span id="theme-label">OBSIDIAN</span>
+      </button>
+      <button id="btn-reset-sim" class="btn-ctrl" title="Reset Dataset Topology & Simulation State">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        RESET TOPOLOGY
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Split-Screen Dashboard Container -->
+  <main class="dashboard-layout">
+
+    <!-- ============================================================== -->
+    <!-- LEFT COLUMN (35%): Reference Client Mobile Payment Sandbox      -->
+    <!-- ============================================================== -->
+    <section class="panel-left-sandbox">
+      <div class="panel-header">
+        <div class="header-tag">TARGET ENDPOINT CLIENT</div>
+        <h2>Mobile Payment Sandbox</h2>
+        <span class="panel-desc">Real-time device telemetry &amp; VPA payment client simulation</span>
+      </div>
+
+      <!-- Smartphone Hardware Shell -->
+      <div class="phone-frame-wrapper">
+        <div class="smartphone-shell" id="phone-shell">
+          
+          <!-- Screen Outer Bezel & Hardware Details -->
+          <div class="phone-notch">
+            <div class="speaker-grill"></div>
+            <div class="camera-lens"></div>
+          </div>
+
+          <div class="phone-screen" id="phone-screen">
+            
+            <!-- Mobile OS Status Bar -->
+            <div class="phone-status-bar">
+              <span class="status-time" id="clock-display">12:45</span>
+              <div class="status-icons">
+                <span class="carrier-tag">5G</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                <svg width="18" height="10" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="1" width="18" height="10" rx="2"/><path d="M21 4v4"/></svg>
+              </div>
+            </div>
+
+            <!-- UPI App Header -->
+            <div class="upi-app-nav">
+              <div class="upi-logo-mark">
+                <span class="upi-glyph">UPI</span>
+                <span class="upi-sub">BHARAT PAY</span>
+              </div>
+              <div class="account-badge">
+                <span class="acc-id mono">user.account@upi</span>
+                <span class="acc-bal">BAL: ₹48,500.00</span>
+              </div>
+            </div>
+
+            <!-- Phone Screen View Container -->
+            <div class="phone-content-body" id="phone-view-container">
+
+              <!-- VIEW 1: Checkout Form Screen (Default) -->
+              <div class="view-screen active" id="view-checkout">
+                <div class="checkout-title">
+                  <h3>Transfer Funds</h3>
+                  <p>Send money to any verified UPI ID</p>
+                </div>
+
+                <!-- Scenario Quick Presets -->
+                <div class="form-group preset-group">
+                  <label>TRANSACTION SCENARIO PRESET</label>
+                  <div class="preset-selector">
+                    <select id="preset-selector" class="custom-select">
+                      <option value="safe_merchant">Sharma General Store (Clean Merchant)</option>
+                      <option value="scam_mule_coerced" selected>Unknown Courier Refund (Scam Mule + Call)</option>
+                      <option value="scam_mule_nocall">High-Velocity Mule Dispersal (No Call)</option>
+                      <option value="p2p_clean">Rahul Verma (Legitimate Peer)</option>
+                      <option value="custom">-- Custom UPI Input --</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="input-receiver-vpa">RECEIVER UPI ID (VPA)</label>
+                  <div class="input-with-icon">
+                    <input type="text" id="input-receiver-vpa" class="text-input mono" placeholder="recipient@upi" value="mule_L1_01@upi">
+                    <button class="icon-btn" id="btn-paste-vpa" title="Paste VPA">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="input-amount">AMOUNT (₹)</label>
+                  <div class="input-with-prefix">
+                    <span class="curr-symbol">₹</span>
+                    <input type="number" id="input-amount" class="text-input mono num-input" placeholder="0.00" value="25000">
+                  </div>
+                </div>
+
+                <!-- Simulated Device Hardware Telemetry Drawer -->
+                <div class="telemetry-drawer">
+                  <div class="drawer-header">
+                    <span class="drawer-title">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                      SIMULATED DEVICE TELEMETRY
+                    </span>
+                    <span class="drawer-badge">SENSOR HOOKS</span>
+                  </div>
+
+                  <div class="toggle-row">
+                    <div class="toggle-meta">
+                      <span class="toggle-name">Phone Call Active</span>
+                      <span class="toggle-desc">Incoming audio call during checkout</span>
+                    </div>
+                    <label class="switch">
+                      <input type="checkbox" id="toggle-call" checked>
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+
+                  <div class="toggle-row">
+                    <div class="toggle-meta">
+                      <span class="toggle-name">Screen Sharing Active</span>
+                      <span class="toggle-desc">AnyDesk / TeamViewer foreground</span>
+                    </div>
+                    <label class="switch">
+                      <input type="checkbox" id="toggle-screen">
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="action-footer">
+                  <button id="btn-submit-pay" class="btn-primary-pay">
+                    <span class="btn-text">VERIFY &amp; PROCEED TO PAY</span>
+                    <span class="btn-subtext">DUAL-LAYER HEURISTIC CHECK</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- VIEW 2: Safe PIN Pad Screen (LOW Risk) -->
+              <div class="view-screen" id="view-pinpad">
+                <div class="safe-header">
+                  <div class="safe-badge-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                    SECURITY CHECKS PASSED
+                  </div>
+                  <h3>Enter 6-Digit UPI PIN</h3>
+                  <p class="safe-pay-meta">Paying <span class="mono" id="pin-pay-target">merchant_01</span>: <span class="mono bold" id="pin-pay-amount">₹450</span></p>
+                </div>
+
+                <div class="pin-dots-row">
+                  <div class="pin-dot active"></div>
+                  <div class="pin-dot active"></div>
+                  <div class="pin-dot"></div>
+                  <div class="pin-dot"></div>
+                  <div class="pin-dot"></div>
+                  <div class="pin-dot"></div>
+                </div>
+
+                <div class="keypad-grid">
+                  <button class="key-btn">1</button>
+                  <button class="key-btn">2</button>
+                  <button class="key-btn">3</button>
+                  <button class="key-btn">4</button>
+                  <button class="key-btn">5</button>
+                  <button class="key-btn">6</button>
+                  <button class="key-btn">7</button>
+                  <button class="key-btn">8</button>
+                  <button class="key-btn">9</button>
+                  <button class="key-btn clear-btn">C</button>
+                  <button class="key-btn">0</button>
+                  <button class="key-btn enter-btn" id="btn-pin-confirm">✓</button>
+                </div>
+
+                <button class="btn-link-cancel" id="btn-cancel-pin">Back to Checkout</button>
+              </div>
+
+              <!-- VIEW 3: Success Screen (After Safe PIN) -->
+              <div class="view-screen" id="view-success">
+                <div class="success-icon-wrap">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2A9D8F" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <h3>Payment Completed</h3>
+                <p class="mono text-amount" id="success-amount-display">₹450.00</p>
+                <div class="tx-receipt-card">
+                  <div class="rcpt-row"><span>Ref ID:</span><span class="mono">UPI/40928172910</span></div>
+                  <div class="rcpt-row"><span>Beneficiary:</span><span class="mono" id="success-target-display">merchant_01@okhdfcbank</span></div>
+                  <div class="rcpt-row"><span>Topology Status:</span><span class="status-tag clean">CLEAN &amp; VERIFIED</span></div>
+                </div>
+                <button class="btn-primary-pay btn-sm" id="btn-reset-from-success">New Transaction</button>
+              </div>
+
+              <!-- VIEW 4: Medium Warning Screen (MEDIUM Risk) -->
+              <div class="view-screen" id="view-warn">
+                <div class="warn-icon-wrap">
+                  <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <h3 class="amber-text">Suspicious Dispersal Pattern</h3>
+                <p class="warn-desc">
+                  This receiver account shows rapid multi-hop fund dispersal patterns indicative of an intermediary mule account.
+                </p>
+                <div class="risk-meter-box">
+                  <div class="meter-label"><span>GRAPH ANOMALY RISK</span><span class="mono" id="warn-score-text">0.72 / 1.00</span></div>
+                  <div class="meter-bar"><div class="meter-fill amber" id="warn-meter-fill" style="width: 72%;"></div></div>
+                </div>
+                <div class="warn-actions">
+                  <button class="btn-warn-continue" id="btn-warn-proceed">I Understand, Proceed</button>
+                  <button class="btn-link-cancel" id="btn-warn-cancel">Cancel Payment</button>
+                </div>
+              </div>
+
+              <!-- VIEW 5: Coercion Emergency Lockout (HIGH Risk - Unskippable) -->
+              <div class="view-screen" id="view-lockout">
+                <div class="lockout-overlay">
+                  <div class="lockout-siren-header">
+                    <div class="siren-pulse-badge">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E63946" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                      <span>SECURITY LOCKOUT ACTIVATED</span>
+                    </div>
+                  </div>
+
+                  <h2 class="lockout-headline">3-MINUTE COERCION LOCKOUT</h2>
+
+                  <div class="timer-display-box">
+                    <span class="timer-label">SESSION COOLDOWN REMAINING</span>
+                    <div class="countdown-clock mono" id="countdown-val">02:59</div>
+                  </div>
+
+                  <div class="lockout-alert-body">
+                    <div class="alert-icon-left">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="alert-text">
+                      <strong>Active Phone Call Detected:</strong> Transfer directed to an unverified high-velocity mule dispersal network.
+                    </div>
+                  </div>
+
+                  <div class="instructions-callout">
+                    <p>🚨 <strong>IMMEDIATE ACTION REQUIRED:</strong></p>
+                    <p>If the caller claims to be from <strong>Courier/Customs, Police (Digital Arrest), Electricity Dept, or Bank Support</strong>: <strong>HANG UP IMMEDIATELY.</strong></p>
+                    <p class="sub-tip">You are being socially engineered. UPI payments are irreversible.</p>
+                  </div>
+
+                  <!-- Sandbox Dev Bypass Button -->
+                  <div class="lockout-dev-bar">
+                    <button class="btn-dev-override" id="btn-lockout-override">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                      [DEV] Reset Lockout Sandbox
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- RIGHT COLUMN (65%): SOC Network Graph Intelligence Engine       -->
+    <!-- ============================================================== -->
+    <section class="panel-right-soc">
+      
+      <!-- Top KPI Ribbon -->
+      <div class="soc-kpi-ribbon">
+        <div class="kpi-card">
+          <div class="kpi-tag">TOTAL TRANSACTIONS</div>
+          <div class="kpi-num mono" id="kpi-tx-count">1,842</div>
+          <div class="kpi-trend positive">+14/min live</div>
+        </div>
+
+        <div class="kpi-card highlight-amber">
+          <div class="kpi-tag">FLAGGED MULE ACCOUNTS</div>
+          <div class="kpi-num mono" id="kpi-mules-count">15</div>
+          <div class="kpi-trend danger">1 Ring Identified</div>
+        </div>
+
+        <div class="kpi-card highlight-crimson">
+          <div class="kpi-tag">BLOCKED COERCIONS</div>
+          <div class="kpi-num mono" id="kpi-blocked-count">38</div>
+          <div class="kpi-trend alert">100% Intercept Rate</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-tag">TOPOLOGY HEALTH</div>
+          <div class="kpi-num mono" id="kpi-clean-nodes">45</div>
+          <div class="kpi-trend">Clean Verified Nodes</div>
+        </div>
+      </div>
+
+      <!-- Workspace View Switcher Tabs -->
+      <div class="workspace-view-tabs">
+        <button class="view-tab-btn active" id="tab-graph-view">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          TOPOLOGY GRAPH &amp; QUANTUM CUT
+        </button>
+        <button class="view-tab-btn" id="tab-table-view">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          DATASHEET SCAM VERIFIER &amp; INSPECTION TABLE
+          <span class="tab-badge mono" id="table-tx-badge">0 TXNS</span>
+        </button>
+      </div>
+
+      <!-- Network Graph Workspace Area -->
+      <div class="graph-workspace-panel">
+        
+        <!-- Quantum Solver & Dataset Ingestion Ribbon -->
+        <div class="quantum-control-ribbon">
+          <div class="quantum-actions-group">
+            <input type="file" id="input-csv-upload" accept=".csv" style="display: none;">
+            <button class="btn-quantum-action" id="btn-upload-csv" title="Upload custom UPI transaction dataset (.csv)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              UPLOAD CSV DATASHEET
+            </button>
+            <button class="btn-quantum-action highlight" id="btn-run-quantum" title="Execute QAOA Ising Hamiltonian Statevector Solver">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              EXECUTE QUANTUM TOPOLOGY OPTIMIZATION
+            </button>
+          </div>
+
+          <div class="quantum-telemetry-pill" id="quantum-pill-badge">
+            <span class="qpu-icon">⚡</span>
+            <span class="qpu-text mono" id="qpu-telemetry-text">QPU Statevector: 8 Qubits | Depth: 14 | Fidelity: 98.4%</span>
+          </div>
+        </div>
+
+        <!-- VIEW 1: D3 Network Topology Graph Canvas View -->
+        <div class="workspace-view-content active" id="workspace-graph-view">
+          <div class="graph-header-bar">
+            <div class="graph-title-block">
+              <h3>TRANSACTION TOPOLOGY &amp; QUANTUM SMURFING DETECTOR</h3>
+              <span class="mono-badge">QAOA ISING HAMILTONIAN GRAPH SOLVER</span>
+            </div>
+
+            <div class="graph-legend">
+              <span class="legend-item"><span class="legend-dot clean"></span> Clean / Merchant</span>
+              <span class="legend-item"><span class="legend-dot sender"></span> Client Sender</span>
+              <span class="legend-item"><span class="legend-dot mule"></span> Layer-1 / Layer-2 Mule</span>
+              <span class="legend-item"><span class="legend-dot hub"></span> Cash-out Hub</span>
+            </div>
+
+            <div class="graph-actions">
+              <button class="btn-graph-action" id="btn-fit-graph" title="Reset Zoom & Pan">FIT VIEW</button>
+              <button class="btn-graph-action" id="btn-highlight-ring" title="Highlight Active Smurfing Ring">MULE RING</button>
+            </div>
+          </div>
+
+          <!-- SVG Container for D3 Network Graph -->
+          <div class="graph-canvas-container" id="graph-container">
+            <svg id="network-svg"></svg>
+
+            <!-- Graph Overlay Tooltip -->
+            <div class="graph-tooltip" id="graph-tooltip" style="display: none;"></div>
+
+            <!-- Sliding Inspection Drawer for Clicked Node -->
+            <div class="node-inspector-drawer" id="node-inspector">
+              <div class="inspector-header">
+                <div class="inspector-title">
+                  <span class="type-tag" id="inspect-tier">MULE_L1</span>
+                  <h4 class="mono" id="inspect-id">mule_L1_01@upi</h4>
+                </div>
+                <button class="close-drawer-btn" id="btn-close-inspector">&times;</button>
+              </div>
+
+              <div class="inspector-body">
+                <div class="inspect-stat-grid">
+                  <div class="stat-cell">
+                    <span class="stat-label">ACCOUNT AGE</span>
+                    <span class="stat-val mono" id="inspect-age">8.5 hrs</span>
+                  </div>
+                  <div class="stat-cell">
+                    <span class="stat-label">IN / OUT DEGREE</span>
+                    <span class="stat-val mono" id="inspect-degrees">1 in / 2 out</span>
+                  </div>
+                  <div class="stat-cell">
+                    <span class="stat-label">FLAGGED HISTORY</span>
+                    <span class="stat-val mono" id="inspect-flags">2 Reports</span>
+                  </div>
+                  <div class="stat-cell">
+                    <span class="stat-label">AVG DWELL TIME</span>
+                    <span class="stat-val mono" id="inspect-dwell">54s (High Velocity)</span>
+                  </div>
+                </div>
+
+                <div class="inspect-risk-section">
+                  <div class="risk-bar-head">
+                    <span>TOPOLOGY RISK CONTRIBUTION</span>
+                    <span class="mono" id="inspect-risk-val">0.85 / 1.00</span>
+                  </div>
+                  <div class="meter-bar"><div class="meter-fill" id="inspect-risk-fill" style="width: 85%;"></div></div>
+                </div>
+
+                <div class="connected-peers-list">
+                  <span class="subhead">CONNECTED 2-HOP TRANSFERS</span>
+                  <div class="peers-scroll" id="inspect-peers">
+                    <!-- Injected dynamically -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIEW 2: Datasheet Scam Verifier & Inspection Table -->
+        <div class="workspace-view-content" id="workspace-table-view" style="display: none;">
+          <div class="datasheet-toolbar">
+            <div class="toolbar-search-box">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="table-search-input" class="mono text-input" placeholder="Search by TxID, VPA, Account or Amount...">
+            </div>
+
+            <div class="toolbar-filters">
+              <button class="filter-pill active" data-filter="all" id="btn-filter-all">ALL (<span id="count-all">0</span>)</button>
+              <button class="filter-pill fraud" data-filter="fraud" id="btn-filter-fraud">🔴 FRAUD / MULE RING (<span id="count-fraud">0</span>)</button>
+              <button class="filter-pill clean" data-filter="clean" id="btn-filter-clean">🟢 CLEAN / MERCHANT (<span id="count-clean">0</span>)</button>
+              <button class="filter-pill hub" data-filter="hub" id="btn-filter-hub">🟠 CASHOUT HUBS (<span id="count-hub">0</span>)</button>
+            </div>
+
+            <div class="toolbar-actions">
+              <button class="btn-table-action highlight" id="btn-batch-verify">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                BATCH QUANTUM VERIFY
+              </button>
+              <button class="btn-table-action" id="btn-refresh-table" title="Refresh Datasheet Table">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+                REFRESH
+              </button>
+            </div>
+          </div>
+
+          <!-- Batch Verification Summary Alert Banner -->
+          <div class="batch-summary-banner" id="batch-summary-banner" style="display: none;">
+            <div class="summary-badge-icon">⚡</div>
+            <div class="summary-details">
+              <div class="summary-title mono">QAOA STATEVECTOR ENGINE VERIFICATION CONVERGED</div>
+              <div class="summary-text" id="batch-summary-text">
+                Scanned 65 transactions | 15 Fraud Dispersals Blocked | Intercept Precision: 100% | Quantum Fidelity: 98.4%
+              </div>
+            </div>
+            <button class="close-summary-btn" id="btn-close-summary">&times;</button>
+          </div>
+
+          <!-- Scrollable Table Container -->
+          <div class="datasheet-table-container">
+            <table class="datasheet-table" id="datasheet-table">
+              <thead>
+                <tr>
+                  <th class="col-tx">TX ID</th>
+                  <th class="col-sender">SENDER VPA</th>
+                  <th class="col-target">BENEFICIARY VPA</th>
+                  <th class="col-amount">AMOUNT (₹)</th>
+                  <th class="col-type">TX TYPE</th>
+                  <th class="col-dwell">DWELL / VELOCITY</th>
+                  <th class="col-status">GROUND TRUTH &amp; RISK</th>
+                  <th class="col-actions">VERIFICATION ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody id="datasheet-table-body">
+                <!-- Rows injected dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Table Footer Pagination / Stats -->
+          <div class="datasheet-footer">
+            <div class="footer-stats mono" id="table-footer-stats">
+              Showing <span id="showing-count">0</span> of <span id="total-count">0</span> transactions
+            </div>
+            <div class="footer-legend">
+              <span class="legend-hint">💡 Tip: Click <strong>"VERIFY IN ENGINE"</strong> on any row to instantly simulate live transaction in Sandbox &amp; evaluate quantum statevector risk.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- Bottom Panel: Real-time Telemetry & Decision Log (Terminal) -->
+      <div class="soc-terminal-panel">
+        <div class="terminal-header">
+          <div class="term-title">
+            <span class="term-dot"></span>
+            <span>REAL-TIME AUDIT STREAM &amp; COERCION RECOGNITION LOG</span>
+          </div>
+          <div class="term-meta">
+            <span class="mono" id="stream-clock">LIVE FEED // SHA-256 HASHED</span>
+            <button class="btn-clear-term" id="btn-clear-log">CLEAR</button>
+          </div>
+        </div>
+        
+        <div class="terminal-body mono" id="terminal-feed">
+          <!-- Live audit logs appended dynamically -->
+          <div class="log-entry system">
+            <span class="log-time">[SYSTEM]</span>
+            <span class="log-msg">RAKSHAM Engine initialized. 60 nodes pre-loaded into NetworkX memory graph.</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
