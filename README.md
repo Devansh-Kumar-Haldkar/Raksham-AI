@@ -179,3 +179,5 @@ The visual interface adheres to the **Industrial Dark Mode Cybersecurity Palette
 
 ## 📄 License
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+#   T h r e e . j s - R a p i e r - p h y s i c s  
+ 
